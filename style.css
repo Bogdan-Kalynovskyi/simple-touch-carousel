@@ -1,0 +1,62 @@
+html,
+body {
+    height: 100%;
+}
+
+#container {
+    height: 100%;
+    overflow: hidden; /* for float in #right */
+}
+
+
+/* THIS CSS IS NEEDED - start */
+#carousel,
+.carousel-button,
+#carousel-scroll,
+#carousel-scroll li {
+    margin: 0;
+    padding: 0;
+}
+
+#carousel {
+    overflow: hidden;
+    position: relative;
+}
+
+#carousel-scroll {
+    position: absolute;
+    left: 0;
+    top: 0;
+    -webkit-transition: top .5s;
+    transition: top .5s
+}
+
+.carousel-button.disabled {
+    visibility: hidden;
+}
+
+/* THIS CSS IS NEEDED - end */
+
+
+/* this is styling only - begin */
+
+.carousel-button {
+    background: #CCFFCC;
+    font-size: 2em;
+}
+
+#carousel {
+    width: 300px;
+    height: 200px;
+    border: 1px solid black;
+}
+
+#carousel-scroll li {
+    width: 300px;
+    height: 200px;
+    outline: 1px solid red;
+    background: yellow;
+    font-size: 7em;
+    text-align: center;
+}
+/* this is styling only - end */
