@@ -2,9 +2,11 @@ function $$ (str) {
     return document.getElementById(str);
 }
 
+
 function $ (str) {
     return document.querySelectorAll(str);
 }
+
 
 Element.prototype.hasClass = function (className) {
     if (document.documentElement.classList) {
@@ -13,6 +15,8 @@ Element.prototype.hasClass = function (className) {
         return new RegExp('(^|\\s)' + className + '(\\s|$)').test(this.className);
     }
 };
+
+
 Element.prototype.addClass = function (className) {
     if (!this.hasClass(className)) {
         if (document.documentElement.classList) {
@@ -22,6 +26,8 @@ Element.prototype.addClass = function (className) {
         }
     }
 };
+
+
 Element.prototype.removeClass = function (className) {
     if (this.hasClass(className)) {
         if (document.documentElement.classList) {
@@ -31,6 +37,26 @@ Element.prototype.removeClass = function (className) {
         }
     }
 };
+
+
+function transitionEndEventName () {
+    var i,
+        undefined,
+        el = document.createElement('div'),
+        transitions = {
+            'transition':'transitionend',
+            'OTransition':'otransitionend',
+            'MozTransition':'transitionend',
+            'WebkitTransition':'webkitTransitionEnd'
+        };
+
+    for (i in transitions) {
+        if (transitions.hasOwnProperty(i) && el.style[i] !== undefined) {
+            return transitions[i];
+        }
+    }
+}
+
 function swipe (element, callback){
 
     var direction,
@@ -76,7 +102,7 @@ function swipe (element, callback){
             }
         }
         if (direction) {
-            callback(direction);
+            callback(direction, Math.max(distX, distY) / elapsedTime);
         }
     });
 }
